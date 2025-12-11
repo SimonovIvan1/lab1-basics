@@ -1,0 +1,139 @@
+.main-content {
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.intro {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro h2 {
+  color: #2d3748;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin-bottom: 25px;
+}
+
+.features {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.features h3 {
+  color: #2d3748;
+  margin-bottom: 15px;
+}
+
+.features ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.features li {
+  padding: 12px 15px;
+  background: #edf2f7;
+  border-radius: 8px;
+  color: #2d3748;
+  transition: all 0.3s ease;
+}
+
+.features li:hover {
+  background: #667eea;
+  color: white;
+  transform: translateX(5px);
+}
+
+.team {
+  margin: 50px 0;
+}
+
+.team h2 {
+  text-align: center;
+  color: #2d3748;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.user-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.content-block {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.content-block h3 {
+  color: #2d3748;
+  margin-bottom: 20px;
+}
+
+.content-block p {
+  line-height: 1.7;
+  color: #4a5568;
+  margin-bottom: 25px;
+}
+
+.code-example {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  margin-top: 20px;
+}
+
+.code-example pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px 15px;
+  }
+  
+  .intro {
+    padding: 20px;
+  }
+  
+  .features ul {
+    grid-template-columns: 1fr;
+  }
+  
+  .user-cards-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .content-block {
+    padding: 20px;
+  }
+}
