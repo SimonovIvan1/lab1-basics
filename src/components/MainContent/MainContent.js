@@ -1,5 +1,5 @@
 import React from 'react';
-import UserCard from '../UserCard/UserCard';
+import UserList from '../UserList/UserList';
 import './MainContent.css';
 
 function MainContent() {
@@ -47,6 +47,28 @@ function MainContent() {
       avatarColor: '#4facfe',
       isOnline: true,
       rating: 4.7
+    },
+    {
+      id: 5,
+      name: 'Сергей Волков',
+      role: 'Frontend разработчик',
+      experience: '1 год',
+      skills: ['React', 'JavaScript', 'HTML', 'CSS'],
+      description: 'Начинающий разработчик, учусь React',
+      avatarColor: '#38b2ac',
+      isOnline: true,
+      rating: 3.8
+    },
+    {
+      id: 6,
+      name: 'Ольга Смирнова',
+      role: 'UI/UX дизайнер',
+      experience: '3 года',
+      skills: ['Figma', 'Adobe XD', 'UI Design', 'Prototyping'],
+      description: 'Создаю дизайн для мобильных и веб-приложений',
+      avatarColor: '#ed64a6',
+      isOnline: false,
+      rating: 4.6
     }
   ];
 
@@ -57,7 +79,9 @@ function MainContent() {
     'Адаптивный дизайн',
     'Компонентный подход',
     'Props и State',
-    'PropTypes'
+    'Метод map()',
+    'Ключи (keys)',
+    'Сортировка и фильтрация'
   ];
 
   return (
@@ -67,7 +91,7 @@ function MainContent() {
         <p>
           Этот проект создан для изучения структуры React-приложений,
           работы с компонентами и их стилизацией с помощью CSS Modules.
-          В этой лабораторной работе мы изучаем передачу данных через props.
+          В этой лабораторной работе мы изучаем динамическое формирование разметки с помощью метода map().
         </p>
         <div className="features">
           <h3>Что мы изучим:</h3>
@@ -79,57 +103,47 @@ function MainContent() {
         </div>
       </section>
       
-      <section className="team">
-        <h2>Наша команда</h2>
-        <p className="team-description">
-          Каждый участник команды получает данные через props
-        </p>
-        <div className="user-cards-container">
-          {users.map(user => (
-            <UserCard
-              key={user.id}
-              name={user.name}
-              role={user.role}
-              experience={user.experience}
-              skills={user.skills}
-              description={user.description}
-              avatarColor={user.avatarColor}
-              isOnline={user.isOnline}
-              rating={user.rating}
-            />
-          ))}
-        </div>
-      </section>
-      
-      <section className="props-example">
-        <h2>Пример передачи props</h2>
+      <section className="map-example">
+        <h2>Пример использования метода map()</h2>
         <div className="example-content">
           <div className="example-code">
             <pre>
-{`<UserCard
-  name="Алексей Петров"
-  role="Frontend разработчик"
-  experience="3 года"
-  skills={['React', 'JavaScript', 'CSS']}
-  description="Описание..."
-  avatarColor="#667eea"
-  isOnline={true}
-  rating={4.5}
-/>`}
+{`// Пример рендеринга списка
+const users = [{id: 1, name: 'Алексей'}, {id: 2, name: 'Мария'}];
+
+function UserList() {
+  return (
+    <div>
+      {users.map(user => (
+        <div key={user.id}>
+          <h3>{user.name}</h3>
+        </div>
+      ))}
+    </div>
+  );
+}`}
             </pre>
           </div>
           <div className="example-explanation">
-            <h3>Что такое props?</h3>
-            <p>Props (properties) - это параметры, которые передаются компонентам для настройки их поведения и отображения.</p>
+            <h3>Метод map() в React</h3>
+            <p>Используется для преобразования массивов данных в массив React-элементов.</p>
             <h4>Основные правила:</h4>
             <ul>
-              <li>Props доступны только для чтения</li>
-              <li>Передаются от родительского к дочернему компоненту</li>
-              <li>Могут быть любого типа данных</li>
-              <li>Можно задавать значения по умолчанию</li>
+              <li>Всегда добавляйте уникальный key prop</li>
+              <li>Key должен быть стабильным и предсказуемым</li>
+              <li>Не используйте индекс массива как key, если данные могут меняться</li>
+              <li>Каждый элемент в списке должен иметь уникальный key</li>
             </ul>
           </div>
         </div>
+      </section>
+      
+      <section className="team">
+        <h2>Динамический список пользователей</h2>
+        <p className="team-description">
+          Используйте фильтры и сортировку для управления списком
+        </p>
+        <UserList initialUsers={users} />
       </section>
     </main>
   );

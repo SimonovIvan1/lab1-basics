@@ -1,0 +1,138 @@
+.userList {
+  padding: 20px;
+  background: #f7fafc;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+
+.controls {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.controls h3 {
+  color: #2d3748;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.filterGroup {
+  margin-bottom: 15px;
+}
+
+.filterGroup label {
+  display: block;
+  margin-bottom: 5px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+}
+
+.sortButtons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sortButton {
+  padding: 8px 16px;
+  background: #edf2f7;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.sortButton:hover {
+  background: #e2e8f0;
+}
+
+.sortButton.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.resetButton {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid #fc8181;
+  color: #fc8181;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  width: 100%;
+}
+
+.resetButton:hover {
+  background: #fc8181;
+  color: white;
+}
+
+.stats {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.noResults {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  color: #4a5568;
+}
+
+.listContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .listContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .sortButtons {
+    flex-direction: column;
+  }
+  
+  .sortButton {
+    width: 100%;
+  }
+}

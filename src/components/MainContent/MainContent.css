@@ -225,3 +225,29 @@
     padding: 20px;
   }
 }
+
+/* Существующие стили остаются */
+
+/* Добавляем новые стили для ЛР4 */
+.map-example {
+  margin-top: 60px;
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.map-example h2 {
+  text-align: center;
+  color: #2d3748;
+  margin-bottom: 30px;
+}
+
+/* Используем существующие стили .example-content, .example-code и .example-explanation */
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .map-example {
+    padding: 20px;
+  }
+}
