@@ -1,0 +1,29 @@
+.notification {
+  animation: slideIn 0.3s ease-out;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.text {
+  font-weight: 500;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

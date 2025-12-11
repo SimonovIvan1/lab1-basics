@@ -226,9 +226,6 @@
   }
 }
 
-/* Существующие стили остаются */
-
-/* Добавляем новые стили для ЛР4 */
 .map-example {
   margin-top: 60px;
   padding: 30px;
@@ -249,5 +246,57 @@
 @media (max-width: 768px) {
   .map-example {
     padding: 20px;
+  }
+}
+
+.conditional-section,
+.inline-styles-section {
+  margin-top: 60px;
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.conditional-section h2,
+.inline-styles-section h2 {
+  text-align: center;
+  color: #2d3748;
+  margin-bottom: 30px;
+}
+
+/* Улучшаем стили для примеров кода */
+.example-code pre {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  tab-size: 2;
+}
+
+.example-code pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+/* Стили для уведомлений в основном контенте */
+.notification {
+  margin-bottom: 15px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .conditional-section,
+  .inline-styles-section {
+    padding: 20px;
+  }
+  
+  .example-content {
+    grid-template-columns: 1fr;
   }
 }

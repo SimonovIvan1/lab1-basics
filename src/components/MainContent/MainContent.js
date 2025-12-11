@@ -1,5 +1,8 @@
 import React from 'react';
 import UserList from '../UserList/UserList';
+import Notification from '../Notification/Notification';
+import ToggleTheme from '../ToggleTheme/ToggleTheme';
+import ConditionalRender from '../ConditionalRender/ConditionalRender';
 import './MainContent.css';
 
 function MainContent() {
@@ -69,6 +72,28 @@ function MainContent() {
       avatarColor: '#ed64a6',
       isOnline: false,
       rating: 4.6
+    },
+    {
+      id: 7,
+      name: 'Дмитрий Козлов',
+      role: 'DevOps инженер',
+      experience: '6 лет',
+      skills: ['Docker', 'Kubernetes', 'AWS', 'CI/CD', 'Linux'],
+      description: 'Автоматизирую процессы развертывания и мониторинга',
+      avatarColor: '#f56565',
+      isOnline: true,
+      rating: 4.9
+    },
+    {
+      id: 8,
+      name: 'Анна Новикова',
+      role: 'Frontend разработчик',
+      experience: '2 года',
+      skills: ['React', 'Vue.js', 'Sass', 'Webpack'],
+      description: 'Люблю создавать анимации и интерактивные элементы',
+      avatarColor: '#4299e1',
+      isOnline: false,
+      rating: 4.3
     }
   ];
 
@@ -81,7 +106,9 @@ function MainContent() {
     'Props и State',
     'Метод map()',
     'Ключи (keys)',
-    'Сортировка и фильтрация'
+    'Сортировка и фильтрация',
+    'Условный рендеринг',
+    'Встроенные стили (inline styles)'
   ];
 
   return (
@@ -90,9 +117,21 @@ function MainContent() {
         <h2>О нашем проекте</h2>
         <p>
           Этот проект создан для изучения структуры React-приложений,
-          работы с компонентами и их стилизацией с помощью CSS Modules.
-          В этой лабораторной работе мы изучаем динамическое формирование разметки с помощью метода map().
+          работы с компонентами и их стилизацией. В этой лабораторной работе 
+          мы изучаем условный рендеринг и встроенные стили.
         </p>
+        
+        {/* Пример уведомлений с разными типами */}
+        <Notification 
+          type="info" 
+          message="Добро пожаловать в лабораторную работу 5!" 
+        />
+        <Notification 
+          type="success" 
+          message="Успешно загружены данные пользователей" 
+          duration={3000}
+        />
+        
         <div className="features">
           <h3>Что мы изучим:</h3>
           <ul>
@@ -103,47 +142,115 @@ function MainContent() {
         </div>
       </section>
       
-      <section className="map-example">
-        <h2>Пример использования метода map()</h2>
+      <section className="conditional-section">
+        <h2>Условный рендеринг</h2>
+        
         <div className="example-content">
           <div className="example-code">
             <pre>
-{`// Пример рендеринга списка
-const users = [{id: 1, name: 'Алексей'}, {id: 2, name: 'Мария'}];
+{`// Примеры условного рендеринга
 
-function UserList() {
-  return (
-    <div>
-      {users.map(user => (
-        <div key={user.id}>
-          <h3>{user.name}</h3>
+// 1. Логический оператор &&
+{isLoggedIn && <UserProfile />}
+
+// 2. Тернарный оператор
+{isLoading ? <Spinner /> : <Content />}
+
+// 3. Переменная с JSX
+let message;
+if (userRole === 'admin') {
+  message = <AdminPanel />;
+} else {
+  message = <UserPanel />;
+}
+
+// 4. Немедленно вызываемая функция
+{(() => {
+  if (error) return <Error />;
+  if (loading) return <Loader />;
+  return <Data />;
+})()}`}
+            </pre>
+          </div>
+          <div className="example-explanation">
+            <h3>Методы условного рендеринга</h3>
+            <p>React предоставляет несколько способов для условного отображения компонентов.</p>
+            <h4>Основные подходы:</h4>
+            <ul>
+              <li><strong>if/else</strong> - для сложных условий</li>
+              <li><strong>&& оператор</strong> - для простых условий</li>
+              <li><strong>Тернарный оператор</strong> - для выбора между двумя вариантами</li>
+              <li><strong>Немедленно вызываемая функция</strong> - для сложной логики</li>
+            </ul>
+          </div>
         </div>
-      ))}
-    </div>
+        
+        {/* Компонент с условным рендерингом */}
+        <ConditionalRender />
+      </section>
+      
+      <section className="inline-styles-section">
+        <h2>Встроенные стили (Inline Styles)</h2>
+        
+        <div className="example-content">
+          <div className="example-code">
+            <pre>
+{`// Пример встроенных стилей
+
+const buttonStyle = {
+  padding: '10px 20px',
+  backgroundColor: '#667eea',
+  color: 'white',
+  borderRadius: '5px',
+  border: 'none',
+  cursor: 'pointer'
+};
+
+function MyButton() {
+  return (
+    <button style={buttonStyle}>
+      Нажми меня
+    </button>
   );
+}
+
+// Динамические стили
+function DynamicButton({ isActive }) {
+  const dynamicStyle = {
+    ...buttonStyle,
+    backgroundColor: isActive ? '#48bb78' : '#667eea'
+  };
+  
+  return <button style={dynamicStyle}>Кнопка</button>;
 }`}
             </pre>
           </div>
           <div className="example-explanation">
-            <h3>Метод map() в React</h3>
-            <p>Используется для преобразования массивов данных в массив React-элементов.</p>
-            <h4>Основные правила:</h4>
+            <h3>Встроенные стили в React</h3>
+            <p>Встроенные стили - это JavaScript-объекты, которые передаются через атрибут style.</p>
+            <h4>Особенности:</h4>
             <ul>
-              <li>Всегда добавляйте уникальный key prop</li>
-              <li>Key должен быть стабильным и предсказуемым</li>
-              <li>Не используйте индекс массива как key, если данные могут меняться</li>
-              <li>Каждый элемент в списке должен иметь уникальный key</li>
+              <li>Имена свойств в camelCase (backgroundColor вместо background-color)</li>
+              <li>Значения в виде строк (включая числовые)</li>
+              <li>Подходят для динамических стилей</li>
+              <li>Меньше производительности, чем CSS-классы</li>
             </ul>
           </div>
         </div>
+        
+        {/* Компонент с переключением темы */}
+        <ToggleTheme />
       </section>
       
       <section className="team">
         <h2>Динамический список пользователей</h2>
-        <p className="team-description">
-          Используйте фильтры и сортировку для управления списком
-        </p>
         <UserList initialUsers={users} />
+        
+        {/* Дополнительное уведомление */}
+        <Notification 
+          type="warning" 
+          message="Не забудьте сохранить изменения перед выходом" 
+        />
       </section>
     </main>
   );
