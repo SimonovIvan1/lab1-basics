@@ -9,36 +9,44 @@ function MainContent() {
       name: 'Алексей Петров',
       role: 'Frontend разработчик',
       experience: '3 года',
-      skills: ['React', 'JavaScript', 'CSS', 'TypeScript'],
+      skills: ['React', 'JavaScript', 'CSS', 'TypeScript', 'Redux', 'Next.js'],
       description: 'Специализируюсь на создании современных пользовательских интерфейсов',
-      avatarColor: '#667eea'
+      avatarColor: '#667eea',
+      isOnline: true,
+      rating: 4.5
     },
     {
       id: 2,
       name: 'Мария Иванова',
       role: 'UI/UX дизайнер',
       experience: '4 года',
-      skills: ['Figma', 'Adobe XD', 'Photoshop', 'Illustrator'],
+      skills: ['Figma', 'Adobe XD', 'Photoshop', 'Illustrator', 'Sketch'],
       description: 'Создаю удобные и красивые интерфейсы',
-      avatarColor: '#764ba2'
+      avatarColor: '#764ba2',
+      isOnline: false,
+      rating: 4.8
     },
     {
       id: 3,
       name: 'Иван Сидоров',
       role: 'Backend разработчик',
       experience: '5 лет',
-      skills: ['Node.js', 'Python', 'MongoDB', 'Docker'],
+      skills: ['Node.js', 'Python', 'MongoDB', 'Docker', 'AWS', 'PostgreSQL'],
       description: 'Разрабатываю серверную часть веб-приложений',
-      avatarColor: '#f093fb'
+      avatarColor: '#f093fb',
+      isOnline: true,
+      rating: 4.2
     },
     {
       id: 4,
       name: 'Елена Кузнецова',
       role: 'Fullstack разработчик',
       experience: '2 года',
-      skills: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
+      skills: ['React', 'Node.js', 'PostgreSQL', 'AWS', 'GraphQL'],
       description: 'Работаю над полным циклом разработки приложений',
-      avatarColor: '#4facfe'
+      avatarColor: '#4facfe',
+      isOnline: true,
+      rating: 4.7
     }
   ];
 
@@ -48,7 +56,8 @@ function MainContent() {
     'Flexbox/Grid',
     'Адаптивный дизайн',
     'Компонентный подход',
-    'Props и State'
+    'Props и State',
+    'PropTypes'
   ];
 
   return (
@@ -56,10 +65,10 @@ function MainContent() {
       <section className="intro">
         <h2>О нашем проекте</h2>
         <p>
-          Этот проект создан для изучения структуры React-приложений, 
+          Этот проект создан для изучения структуры React-приложений,
           работы с компонентами и их стилизацией с помощью CSS Modules.
+          В этой лабораторной работе мы изучаем передачу данных через props.
         </p>
-        
         <div className="features">
           <h3>Что мы изучим:</h3>
           <ul>
@@ -69,12 +78,15 @@ function MainContent() {
           </ul>
         </div>
       </section>
-
+      
       <section className="team">
         <h2>Наша команда</h2>
+        <p className="team-description">
+          Каждый участник команды получает данные через props
+        </p>
         <div className="user-cards-container">
           {users.map(user => (
-            <UserCard 
+            <UserCard
               key={user.id}
               name={user.name}
               role={user.role}
@@ -82,8 +94,41 @@ function MainContent() {
               skills={user.skills}
               description={user.description}
               avatarColor={user.avatarColor}
+              isOnline={user.isOnline}
+              rating={user.rating}
             />
           ))}
+        </div>
+      </section>
+      
+      <section className="props-example">
+        <h2>Пример передачи props</h2>
+        <div className="example-content">
+          <div className="example-code">
+            <pre>
+{`<UserCard
+  name="Алексей Петров"
+  role="Frontend разработчик"
+  experience="3 года"
+  skills={['React', 'JavaScript', 'CSS']}
+  description="Описание..."
+  avatarColor="#667eea"
+  isOnline={true}
+  rating={4.5}
+/>`}
+            </pre>
+          </div>
+          <div className="example-explanation">
+            <h3>Что такое props?</h3>
+            <p>Props (properties) - это параметры, которые передаются компонентам для настройки их поведения и отображения.</p>
+            <h4>Основные правила:</h4>
+            <ul>
+              <li>Props доступны только для чтения</li>
+              <li>Передаются от родительского к дочернему компоненту</li>
+              <li>Могут быть любого типа данных</li>
+              <li>Можно задавать значения по умолчанию</li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>

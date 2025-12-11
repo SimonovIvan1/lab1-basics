@@ -24,6 +24,11 @@
   border-bottom: 2px solid #f7fafc;
 }
 
+.avatarContainer {
+  position: relative;
+  margin-right: 20px;
+}
+
 .avatar {
   width: 70px;
   height: 70px;
@@ -34,9 +39,19 @@
   font-size: 24px;
   font-weight: bold;
   color: white;
-  margin-right: 20px;
   flex-shrink: 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.onlineIndicator {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+  background-color: #48bb78;
+  border-radius: 50%;
+  border: 2px solid white;
 }
 
 .userInfo {
@@ -62,6 +77,18 @@
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 0.9rem;
+}
+
+.rating {
+  margin-top: 5px;
+  color: #f6ad55;
+  font-size: 0.9rem;
+}
+
+.rating span {
+  color: #4a5568;
+  margin-left: 5px;
+  font-size: 0.8rem;
 }
 
 .cardBody {
@@ -167,7 +194,7 @@
     text-align: center;
   }
   
-  .avatar {
+  .avatarContainer {
     margin-right: 0;
     margin-bottom: 15px;
   }
