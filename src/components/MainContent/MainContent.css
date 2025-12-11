@@ -1,7 +1,7 @@
 .main-content {
   flex: 1;
   padding: 40px 20px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
 }
@@ -18,6 +18,7 @@
   color: #2d3748;
   margin-bottom: 20px;
   font-size: 2rem;
+  text-align: center;
 }
 
 .intro p {
@@ -25,42 +26,103 @@
   line-height: 1.7;
   color: #4a5568;
   margin-bottom: 25px;
+  text-align: center;
 }
 
-.features {
+/* Навигация по лабораторным работам */
+.lab-navigation {
   background: white;
-  padding: 25px;
+  padding: 20px;
   border-radius: 10px;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
-.features h3 {
-  color: #2d3748;
-  margin-bottom: 15px;
+.lab-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 
-.features ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 12px;
-  list-style: none;
-  padding: 0;
-}
-
-.features li {
-  padding: 12px 15px;
-  background: #edf2f7;
-  border-radius: 8px;
-  color: #2d3748;
+.lab-btn {
+  padding: 12px 24px;
+  border: 2px solid #e2e8f0;
+  background: white;
+  color: #4a5568;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
-.features li:hover {
-  background: #667eea;
-  color: white;
-  transform: translateX(5px);
+.lab-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+  transform: translateY(-2px);
 }
 
+.lab-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+}
+
+/* Карточки лабораторных работ */
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.lab-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.lab-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.lab-card h3 {
+  color: #2d3748;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.lab-card p {
+  color: #718096;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+/* Кнопки */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+}
+
+/* Секция команды */
 .team {
   margin: 50px 0;
 }
@@ -72,47 +134,13 @@
   font-size: 2rem;
 }
 
-.user-cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.content-block {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  margin-top: 50px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
-}
-
-.content-block h3 {
-  color: #2d3748;
-  margin-bottom: 20px;
-}
-
-.content-block p {
-  line-height: 1.7;
-  color: #4a5568;
-  margin-bottom: 25px;
-}
-
-.code-example {
-  background: #2d3748;
-  color: #e2e8f0;
-  padding: 20px;
-  border-radius: 8px;
-  overflow-x: auto;
-  font-family: 'Courier New', monospace;
-  margin-top: 20px;
-}
-
-.code-example pre {
-  margin: 0;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+/* Общие стили для всех лабораторных */
+.class-component,
+.lifecycle-demo,
+.complex-state,
+.event-handling,
+.complex-forms {
+  margin: 30px 0;
 }
 
 /* Адаптивность */
@@ -125,178 +153,19 @@
     padding: 20px;
   }
   
-  .features ul {
+  .lab-buttons {
+    flex-direction: column;
+  }
+  
+  .lab-btn {
+    width: 100%;
+  }
+  
+  .labs-grid {
     grid-template-columns: 1fr;
   }
   
-  .user-cards-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .content-block {
-    padding: 20px;
-  }
-}
-
-.team-description {
-  text-align: center;
-  color: #4a5568;
-  margin-bottom: 30px;
-  font-size: 1.1rem;
-}
-
-.props-example {
-  margin-top: 60px;
-  padding: 30px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.props-example h2 {
-  text-align: center;
-  color: #2d3748;
-  margin-bottom: 30px;
-}
-
-.example-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-}
-
-.example-code {
-  background: #2d3748;
-  color: #e2e8f0;
-  padding: 20px;
-  border-radius: 8px;
-  overflow-x: auto;
-  font-family: 'Courier New', monospace;
-}
-
-.example-code pre {
-  margin: 0;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.example-explanation {
-  padding: 20px;
-}
-
-.example-explanation h3 {
-  color: #2d3748;
-  margin-bottom: 15px;
-}
-
-.example-explanation h4 {
-  color: #4a5568;
-  margin: 20px 0 10px 0;
-}
-
-.example-explanation ul {
-  list-style: none;
-  padding-left: 20px;
-}
-
-.example-explanation li {
-  margin-bottom: 8px;
-  padding-left: 10px;
-  position: relative;
-}
-
-.example-explanation li:before {
-  content: '✓';
-  position: absolute;
-  left: -15px;
-  color: #667eea;
-  font-weight: bold;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .example-content {
-    grid-template-columns: 1fr;
-  }
-  
-  .props-example {
-    padding: 20px;
-  }
-}
-
-.map-example {
-  margin-top: 60px;
-  padding: 30px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.map-example h2 {
-  text-align: center;
-  color: #2d3748;
-  margin-bottom: 30px;
-}
-
-/* Используем существующие стили .example-content, .example-code и .example-explanation */
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .map-example {
-    padding: 20px;
-  }
-}
-
-.conditional-section,
-.inline-styles-section {
-  margin-top: 60px;
-  padding: 30px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.conditional-section h2,
-.inline-styles-section h2 {
-  text-align: center;
-  color: #2d3748;
-  margin-bottom: 30px;
-}
-
-/* Улучшаем стили для примеров кода */
-.example-code pre {
-  background: #2d3748;
-  color: #e2e8f0;
-  padding: 20px;
-  border-radius: 8px;
-  overflow-x: auto;
-  font-family: 'Courier New', monospace;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  tab-size: 2;
-}
-
-.example-code pre code {
-  background: transparent;
-  padding: 0;
-  color: inherit;
-}
-
-/* Стили для уведомлений в основном контенте */
-.notification {
-  margin-bottom: 15px;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .conditional-section,
-  .inline-styles-section {
-    padding: 20px;
-  }
-  
-  .example-content {
-    grid-template-columns: 1fr;
+  .team h2 {
+    font-size: 1.5rem;
   }
 }
