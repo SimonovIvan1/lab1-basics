@@ -1,0 +1,183 @@
+.drag-drop-container {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.drag-drop-container h3 {
+  color: #2d3748;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.drag-instructions {
+  text-align: center;
+  color: #718096;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.tasks-list {
+  margin: 20px 0;
+}
+
+.task-item {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: move;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.task-item:hover {
+  border-color: #cbd5e0;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-item.dragging {
+  opacity: 0.5;
+  background: #edf2f7;
+}
+
+.task-item.drag-over {
+  border-color: #667eea;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-style: dashed;
+}
+
+.task-item.completed {
+  background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(56, 161, 105, 0.1) 100%);
+  border-color: #48bb78;
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.drag-handle {
+  color: #a0aec0;
+  font-size: 18px;
+  cursor: move;
+  padding: 5px;
+}
+
+.drag-handle:hover {
+  color: #667eea;
+}
+
+.task-text {
+  flex: 1;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: #718096;
+}
+
+.btn-remove {
+  background: #fc8181;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-remove:hover {
+  background: #f56565;
+  transform: scale(1.1);
+}
+
+.task-status {
+  font-size: 12px;
+  color: #718096;
+  padding-left: 30px;
+}
+
+.task-item.completed .task-status {
+  color: #48bb78;
+  font-weight: 600;
+}
+
+.task-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.btn-add-task {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-add-task:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.stats {
+  font-size: 14px;
+  color: #4a5568;
+  background: #f8fafc;
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.event-log {
+  margin-top: 25px;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.event-log h4 {
+  color: #2d3748;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.event-log p {
+  color: #718096;
+  font-size: 14px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .task-controls {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .btn-add-task {
+    width: 100%;
+  }
+}

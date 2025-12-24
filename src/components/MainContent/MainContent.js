@@ -10,6 +10,12 @@ import ConditionalRender from '../ConditionalRender/ConditionalRender';
 // Импорты для Последующих работ
 import ClassComponentExample from '../ClassComponentExample/ClassComponentExample';
 import LifecycleDemo from '../LifecycleDemo/LifecycleDemo';
+import ComplexStateObject from '../ComplexStateObject/ComplexStateObject';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
+import DragDropList from '../DragDropList/DragDropList';
+import EventPropagationDemo from '../EventPropagationDemo/EventPropagationDemo';
+import MultiStepForm from '../MultiStepForm/MultiStepForm';
+import DynamicFieldsForm from '../DynamicFieldsForm/DynamicFieldsForm';
 
 function MainContent() {
   const [activeLab, setActiveLab] = useState(1);
@@ -162,7 +168,107 @@ function MainContent() {
           </>
         );
       
+      case 7:
+  return (
+    <>
+      <section className="intro">
+        <h2>Лабораторная работа 7</h2>
+        <p>Сложное состояние: Работа со сложными структурами данных</p>
+        
+        <div className="lab-navigation">
+          <div className="lab-buttons">
+            <button className="lab-btn" onClick={() => setActiveLab(1)}>ЛР1-5</button>
+            <button className="lab-btn" onClick={() => setActiveLab(6)}>ЛР6</button>
+            <button className="lab-btn active" onClick={() => setActiveLab(7)}>ЛР7</button>
+            <button className="lab-btn" onClick={() => setActiveLab(8)}>ЛР8</button>
+            <button className="lab-btn" onClick={() => setActiveLab(9)}>ЛР9</button>
+          </div>
+        </div>
+      </section>
+
+      <Notification 
+        type="info" 
+        message="Работа с вложенными объектами, массивами объектов и иммутабельными обновлениями" 
+      />
+
+      <ComplexStateObject />
       
+      <ShoppingCart />
+
+      <Notification 
+        type="success" 
+        message="Изучите как обновляются сложные структуры данных без мутаций" 
+      />
+    </>
+  );
+
+case 8:
+  return (
+    <>
+      <section className="intro">
+        <h2>Лабораторная работа 8</h2>
+        <p>Обработка событий: События, Drag&Drop, формы</p>
+        
+        <div className="lab-navigation">
+          <div className="lab-buttons">
+            <button className="lab-btn" onClick={() => setActiveLab(1)}>ЛР1-5</button>
+            <button className="lab-btn" onClick={() => setActiveLab(6)}>ЛР6</button>
+            <button className="lab-btn" onClick={() => setActiveLab(7)}>ЛР7</button>
+            <button className="lab-btn active" onClick={() => setActiveLab(8)}>ЛР8</button>
+            <button className="lab-btn" onClick={() => setActiveLab(9)}>ЛР9</button>
+          </div>
+        </div>
+      </section>
+
+      <Notification 
+        type="info" 
+        message="Работа с событиями Drag&Drop, пользовательскими событиями и их распространением" 
+      />
+
+      <DragDropList />
+      
+      <EventPropagationDemo />
+
+      <Notification 
+        type="warning" 
+        message="Попробуйте разные события: drag, drop, mouse, keyboard" 
+      />
+    </>
+  );
+
+case 9:
+  return (
+    <>
+      <section className="intro">
+        <h2>Лабораторная работа 9</h2>
+        <p>Сложные формы: Валидация, динамические поля</p>
+        
+        <div className="lab-navigation">
+          <div className="lab-buttons">
+            <button className="lab-btn" onClick={() => setActiveLab(1)}>ЛР1-5</button>
+            <button className="lab-btn" onClick={() => setActiveLab(6)}>ЛР6</button>
+            <button className="lab-btn" onClick={() => setActiveLab(7)}>ЛР7</button>
+            <button className="lab-btn" onClick={() => setActiveLab(8)}>ЛР8</button>
+            <button className="lab-btn active" onClick={() => setActiveLab(9)}>ЛР9</button>
+          </div>
+        </div>
+      </section>
+
+      <Notification 
+        type="info" 
+        message="Многошаговые формы, валидация в реальном времени, динамические поля" 
+      />
+
+      <MultiStepForm />
+      
+      <DynamicFieldsForm />
+
+      <Notification 
+        type="success" 
+        message="Протестируйте валидацию и попробуйте добавить/удалить поля динамически" 
+      />
+    </>
+  );
       
       default:
         return (

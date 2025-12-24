@@ -169,3 +169,49 @@
     font-size: 1.5rem;
   }
 }
+
+.class-component,
+.lifecycle-demo,
+.complex-state,
+.event-handling,
+.complex-forms {
+  margin: 30px 0;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Специфичные стили для каждой работы */
+.complex-state .state-section {
+  transition: all 0.3s ease;
+}
+
+.drag-drop-container .task-item {
+  transition: transform 0.2s ease;
+}
+
+.multi-step-form .form-step {
+  min-height: 300px;
+}
+
+/* Анимации для перехода между работами */
+.main-content {
+  transition: opacity 0.3s ease;
+}
+
+/* Улучшенная навигация */
+.lab-navigation {
+  position: sticky;
+  top: 20px;
+  z-index: 100;
+  margin-bottom: 30px;
+}
