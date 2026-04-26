@@ -16,6 +16,9 @@ import DragDropList from '../DragDropList/DragDropList';
 import EventPropagationDemo from '../EventPropagationDemo/EventPropagationDemo';
 import MultiStepForm from '../MultiStepForm/MultiStepForm';
 import DynamicFieldsForm from '../DynamicFieldsForm/DynamicFieldsForm';
+import ApiDataFetching from '../ApiDataFetching/ApiDataFetching';
+import ThemeContextProvider from '../ThemeContextProvider/ThemeContextProvider';
+import MemoizationDemo from '../MemoizationDemo/MemoizationDemo';
 
 function MainContent() {
   const [activeLab, setActiveLab] = useState(1);
@@ -36,12 +39,16 @@ function MainContent() {
   ];
 
   const labs = [
-    { id: 1, title: 'ЛР1-ЛР5: Основы React', description: 'Props, State, Компоненты' },
-    { id: 6, title: 'ЛР6: Классовые компоненты', description: 'Жизненный цикл, методы класса' },
-    { id: 7, title: 'ЛР7: Сложное состояние', description: 'Работа со сложными структурами данных' },
-    { id: 8, title: 'ЛР8: Обработка событий', description: 'События, Drag&Drop, формы' },
-    { id: 9, title: 'ЛР9: Сложные формы', description: 'Валидация, динамические поля' }
-  ];
+  { id: 1, title: 'ЛР1-ЛР5: Основы React', description: 'Props, State, Компоненты' },
+  { id: 6, title: 'ЛР6: Классовые компоненты', description: 'Жизненный цикл, методы класса' },
+  { id: 7, title: 'ЛР7: Сложное состояние', description: 'Работа со сложными структурами данных' },
+  { id: 8, title: 'ЛР8: Обработка событий', description: 'События, Drag&Drop, формы' },
+  { id: 9, title: 'ЛР9: Сложные формы', description: 'Валидация, динамические поля' },
+  // ДОБАВЛЯЕМ НОВЫЕ РАБОТЫ:
+  { id: 10, title: 'ЛР10: Работа с API', description: 'HTTP-запросы, асинхронные операции' },
+  { id: 11, title: 'ЛР11: Глобальное состояние', description: 'Context API, управление состоянием' },
+  { id: 12, title: 'ЛР12: Оптимизация React', description: 'Мемоизация, производительность' }
+];
 
   const renderLabContent = () => {
     switch(activeLab) {
@@ -83,6 +90,24 @@ function MainContent() {
                     onClick={() => setActiveLab(9)}
                   >
                     ЛР9
+                  </button>
+                  <button 
+                    className="lab-btn"
+                    onClick={() => setActiveLab(10)}
+                  >
+                    ЛР10
+                  </button>
+                  <button 
+                    className="lab-btn"
+                    onClick={() => setActiveLab(11)}
+                  >
+                    ЛР11
+                  </button>
+                  <button 
+                    className="lab-btn"
+                    onClick={() => setActiveLab(12)}
+                  >
+                    ЛР12
                   </button>
                 </div>
               </div>
@@ -148,6 +173,24 @@ function MainContent() {
                   >
                     ЛР9
                   </button>
+                  <button 
+                    className="lab-btn"
+                    onClick={() => setActiveLab(10)}
+                  >
+                    ЛР10
+                  </button>
+                  <button 
+                    className="lab-btn"
+                    onClick={() => setActiveLab(11)}
+                  >
+                    ЛР11
+                  </button>
+                  <button 
+                    className="lab-btn"
+                    onClick={() => setActiveLab(12)}
+                  >
+                    ЛР12
+                  </button>
                 </div>
               </div>
             </section>
@@ -182,6 +225,9 @@ function MainContent() {
             <button className="lab-btn active" onClick={() => setActiveLab(7)}>ЛР7</button>
             <button className="lab-btn" onClick={() => setActiveLab(8)}>ЛР8</button>
             <button className="lab-btn" onClick={() => setActiveLab(9)}>ЛР9</button>
+            <button className="lab-btn active" onClick={() => setActiveLab(10)}>ЛР10</button>
+            <button className="lab-btn" onClick={() => setActiveLab(11)}>ЛР11</button>
+            <button className="lab-btn" onClick={() => setActiveLab(12)}>ЛР12</button>
           </div>
         </div>
       </section>
@@ -216,6 +262,9 @@ case 8:
             <button className="lab-btn" onClick={() => setActiveLab(7)}>ЛР7</button>
             <button className="lab-btn active" onClick={() => setActiveLab(8)}>ЛР8</button>
             <button className="lab-btn" onClick={() => setActiveLab(9)}>ЛР9</button>
+            <button className="lab-btn active" onClick={() => setActiveLab(10)}>ЛР10</button>
+            <button className="lab-btn" onClick={() => setActiveLab(11)}>ЛР11</button>
+            <button className="lab-btn" onClick={() => setActiveLab(12)}>ЛР12</button>
           </div>
         </div>
       </section>
@@ -250,6 +299,9 @@ case 9:
             <button className="lab-btn" onClick={() => setActiveLab(7)}>ЛР7</button>
             <button className="lab-btn" onClick={() => setActiveLab(8)}>ЛР8</button>
             <button className="lab-btn active" onClick={() => setActiveLab(9)}>ЛР9</button>
+            <button className="lab-btn active" onClick={() => setActiveLab(10)}>ЛР10</button>
+            <button className="lab-btn" onClick={() => setActiveLab(11)}>ЛР11</button>
+            <button className="lab-btn" onClick={() => setActiveLab(12)}>ЛР12</button>
           </div>
         </div>
       </section>
@@ -266,6 +318,111 @@ case 9:
       <Notification 
         type="success" 
         message="Протестируйте валидацию и попробуйте добавить/удалить поля динамически" 
+      />
+    </>
+  );
+
+  case 10:
+  return (
+    <>
+      <section className="intro">
+        <h2>Лабораторная работа 10</h2>
+        <p>Работа с API: HTTP-запросы, асинхронные операции, обработка загрузки и ошибок</p>
+        
+        <div className="lab-navigation">
+          <div className="lab-buttons">
+            <button className="lab-btn" onClick={() => setActiveLab(1)}>ЛР1-5</button>
+            <button className="lab-btn" onClick={() => setActiveLab(6)}>ЛР6</button>
+            <button className="lab-btn" onClick={() => setActiveLab(7)}>ЛР7</button>
+            <button className="lab-btn" onClick={() => setActiveLab(8)}>ЛР8</button>
+            <button className="lab-btn" onClick={() => setActiveLab(9)}>ЛР9</button>
+            <button className="lab-btn active" onClick={() => setActiveLab(10)}>ЛР10</button>
+            <button className="lab-btn" onClick={() => setActiveLab(11)}>ЛР11</button>
+            <button className="lab-btn" onClick={() => setActiveLab(12)}>ЛР12</button>
+          </div>
+        </div>
+      </section>
+
+      <Notification 
+        type="info" 
+        message="Работа с внешними API, обработка асинхронных операций, состояния загрузки и ошибок" 
+      />
+
+      <ApiDataFetching />
+
+      <Notification 
+        type="success" 
+        message="Попробуйте разные HTTP-методы: GET, POST, DELETE" 
+      />
+    </>
+  );
+
+case 11:
+  return (
+    <>
+      <section className="intro">
+        <h2>Лабораторная работа 11</h2>
+        <p>Глобальное состояние: Context API, управление состоянием приложения</p>
+        
+        <div className="lab-navigation">
+          <div className="lab-buttons">
+            <button className="lab-btn" onClick={() => setActiveLab(1)}>ЛР1-5</button>
+            <button className="lab-btn" onClick={() => setActiveLab(6)}>ЛР6</button>
+            <button className="lab-btn" onClick={() => setActiveLab(7)}>ЛР7</button>
+            <button className="lab-btn" onClick={() => setActiveLab(8)}>ЛР8</button>
+            <button className="lab-btn" onClick={() => setActiveLab(9)}>ЛР9</button>
+            <button className="lab-btn" onClick={() => setActiveLab(10)}>ЛР10</button>
+            <button className="lab-btn active" onClick={() => setActiveLab(11)}>ЛР11</button>
+            <button className="lab-btn" onClick={() => setActiveLab(12)}>ЛР12</button>
+          </div>
+        </div>
+      </section>
+
+      <Notification 
+        type="info" 
+        message="Использование Context API для глобального управления состоянием приложения" 
+      />
+
+      <ThemeContextProvider />
+
+      <Notification 
+        type="warning" 
+        message="Попробуйте переключать тему и обратите внимание, как она применяется глобально" 
+      />
+    </>
+  );
+
+case 12:
+  return (
+    <>
+      <section className="intro">
+        <h2>Лабораторная работа 12</h2>
+        <p>Оптимизация React: Мемоизация, ленивая загрузка, виртуализация, профилирование</p>
+        
+        <div className="lab-navigation">
+          <div className="lab-buttons">
+            <button className="lab-btn" onClick={() => setActiveLab(1)}>ЛР1-5</button>
+            <button className="lab-btn" onClick={() => setActiveLab(6)}>ЛР6</button>
+            <button className="lab-btn" onClick={() => setActiveLab(7)}>ЛР7</button>
+            <button className="lab-btn" onClick={() => setActiveLab(8)}>ЛР8</button>
+            <button className="lab-btn" onClick={() => setActiveLab(9)}>ЛР9</button>
+            <button className="lab-btn" onClick={() => setActiveLab(10)}>ЛР10</button>
+            <button className="lab-btn" onClick={() => setActiveLab(11)}>ЛР11</button>
+            <button className="lab-btn active" onClick={() => setActiveLab(12)}>ЛР12</button>
+          </div>
+        </div>
+      </section>
+
+      <Notification 
+        type="info" 
+        message="Техники оптимизации производительности React приложений" 
+      />
+
+      <MemoizationDemo />
+
+      <Notification 
+        type="success" 
+        message="Откройте консоль разработчика (F12) чтобы увидеть разницу в перерендеринге" 
       />
     </>
   );
